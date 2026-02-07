@@ -23,8 +23,7 @@ export function Hero() {
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-gradient-radial from-blue-500/10 via-transparent to-transparent opacity-50" />
 
-      <div className="container mx-auto px-4 z-10">
-        <motion.div
+<div className="container mx-auto px-4 z-10 pt-48">        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

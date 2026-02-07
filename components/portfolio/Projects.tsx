@@ -61,8 +61,8 @@ const projects = [
     size: "md:col-span-6 md:row-span-3",
     category: "FinTech AI",
     image: "/project/expense-tracker.jpeg", //
-    github: "#", 
-    live: "#",
+    github: "https://github.com/Jaanvichouhan34/Expense_tracker", 
+    live: "https://expensetracker-five-mu.vercel.app/",
     tech: ["Next.js", "Chart.js", "Node.js", "MongoDB"],
     fullDescription: "A financial dashboard using AI to track spending patterns, provide personalized saving analytics, and visualize budget health through interactive charts."
   }

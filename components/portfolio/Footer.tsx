@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Mail, Linkedin, Phone, MapPin } from 'lucide-react';
+import { Github, Mail, Linkedin, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 
 const contactInfo = [
@@ -10,21 +10,21 @@ const contactInfo = [
     label: 'Email',
     value: 'jaanvichouhan18805@gmail.com',
     href: 'mailto:jaanvichouhan18805@gmail.com',
-    gradient: 'from-red-500 to-orange-500'
+    gradient: 'from-red-500 to-orange-500' // Keeping your original colors
   },
   {
     icon: Phone,
     label: 'Phone',
     value: '+91 8349003311',
     href: 'tel:+918349003311',
-    gradient: 'from-green-500 to-emerald-500'
+    gradient: 'from-green-500 to-emerald-500' // Keeping your original colors
   },
   {
     icon: MapPin,
     label: 'Location',
     value: 'Madhya Pradesh, India',
     href: '#',
-    gradient: 'from-purple-500 to-pink-500'
+    gradient: 'from-purple-500 to-pink-500' // Keeping your original colors
   }
 ];
 
@@ -91,9 +91,10 @@ export function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative py-32 border-t border-gray-800">
+    <footer id="contact" className="relative py-32 border-t border-gray-800 bg-black">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -102,8 +103,12 @@ export function Footer() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Let's Connect
+              Let&apos;s Work Together
             </h2>
+<p className="text-gray-400 text-md mb-8">
+  Have a project in mind or want to collaborate? I&apos;d love to hear from you.
+  <span className="block mt-1">Let&apos;s create something amazing together.</span>
+</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -116,7 +121,12 @@ export function Footer() {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-xl font-bold text-white mb-6">Get In Touch</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Get In Touch</h3>
+                {/* NEW CONTENT ADDED BELOW */}
+                <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+                  I&apos;m always open to discussing new opportunities, creative projects, or just having a chat about technology and design. Feel free to reach out!
+                </p>
+                
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <motion.a
@@ -128,7 +138,9 @@ export function Footer() {
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       className="relative group flex items-center gap-4 p-4 rounded-xl bg-gray-900/50 backdrop-blur-xl border border-gray-800 hover:border-gray-700 transition-all duration-300"
                     >
+                      {/* HOVER GLOW EFFECT PRESERVED */}
                       <div className={`absolute inset-0 bg-gradient-to-r ${info.gradient} rounded-xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+                      
                       <div className={`relative w-10 h-10 rounded-lg bg-gradient-to-r ${info.gradient} flex items-center justify-center flex-shrink-0`}>
                         <info.icon className="w-5 h-5 text-white" />
                       </div>
@@ -168,87 +180,71 @@ export function Footer() {
               </div>
             </motion.div>
 
-            {/* Right Column - Message Form */}
+{/* Right Column - Form */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-                <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">Send a Message</h3>
-                  <p className="text-gray-400 text-sm mb-8">
-                    Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something amazing together.
-                  </p>
+              <div className="relative p-8 md:p-10 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[80px] -z-10" />
+                
+                <h3 className="text-2xl font-bold text-white mb-2">Send a Message</h3>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
-                        Name
-                      </label>
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Name</label>
                       <input
                         type="text"
-                        id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-300"
                         placeholder="Your name"
+                        className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all placeholder:text-gray-600"
                       />
                     </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
-                        Email
-                      </label>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email</label>
                       <input
                         type="email"
-                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                        placeholder="your.email@example.com"
+                        placeholder="your@email.com"
+                        className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all placeholder:text-gray-600"
                       />
                     </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Subject</label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="What is this about?"
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all placeholder:text-gray-600"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={4}
+                      placeholder="Tell me about your project or idea..."
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500 outline-none transition-all resize-none placeholder:text-gray-600"
+                    />
+                  </div>
 
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                        placeholder="Project inquiry"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"
-                        placeholder="Tell me about your project..."
-                      />
-                    </div>
-
-                    <motion.button
+<motion.button
                       type="submit"
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
@@ -261,36 +257,17 @@ export function Footer() {
                       <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </motion.button>
 
-                    {submitStatus === 'success' && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-green-400 text-sm text-center"
-                      >
-                        Message sent successfully! I'll get back to you soon.
-                      </motion.p>
-                    )}
-
-                    {submitStatus === 'error' && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-red-400 text-sm text-center"
-                      >
-                        Error sending message. Please try again or contact me directly.
-                      </motion.p>
-                    )}
-                  </form>
-                </div>
+                  {submitStatus === 'success' && (
+                    <p className="text-green-400 text-xs font-bold text-center mt-4 uppercase tracking-widest animate-pulse">
+                      Message Sent Successfully!
+                    </p>
+                  )}
+                </form>
               </div>
             </motion.div>
           </div>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50" />
     </footer>
   );
 }
