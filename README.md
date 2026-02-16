@@ -52,5 +52,4 @@ An immersive, high-performance developer portfolio featuring a 3D interactive ro
 * **Email:** jaanvichouhan18805@gmail.com
 * **GitHub:** [@Jaanvichouhan34](https://github.com/Jaanvichouhan34)
 
-* ///
 ///
